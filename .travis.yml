@@ -12,6 +12,7 @@ install:
   - cmake ../..
   - cmake --build . --config Release
   - sudo make install
+  - cd ../../..
 
 script:
   - cd output && bash ../tidy.sh
