@@ -1,9 +1,4 @@
-language: python
-
-python: 3.6
-
 install:
-  - npm install -g grunt-cli
   # Install and build on Ubuntu:
   # https://codeyarns.com/2016/06/06/how-to-build-and-install-html-tidy/
   - git clone https://github.com/htacg/tidy-html5.git
