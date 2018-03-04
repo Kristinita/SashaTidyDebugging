@@ -4,4 +4,6 @@ install:
 
 build_script:
 
-  - tidy -mq "SashaBeautiful.html"
+  - chcp 65001
+  - tidy -mq SashaBeautiful.html
+  - tidy -mq СашаПрекрасна.html
