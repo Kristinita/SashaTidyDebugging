@@ -2,8 +2,11 @@ install:
 
   - choco install html-tidy -y
 
+before_build:
+
+  - tidy -mq SashaBeautiful.html
+
 build_script:
 
-  - chcp 65001
   - tidy -mq SashaBeautiful.html
-  - tidy -mq СашаПрекрасна.html
+
