@@ -3,5 +3,5 @@
 shopt -s globstar
 for i in **/*.html; do
 	echo $i
-	tidy -mq --wrap 0 $i
+	tidy -mq $i
 done
