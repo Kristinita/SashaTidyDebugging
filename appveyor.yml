@@ -1,6 +1,6 @@
 install:
 
-  - choco install html-tidy -y
+  - choco install html-tidy -y -i
 
 before_build:
 
