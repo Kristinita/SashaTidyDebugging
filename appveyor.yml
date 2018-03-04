@@ -5,4 +5,4 @@ install:
 build_script:
 
   - chcp 65001
-  - tidy.bat
+  - tidy -mq СашаПрекрасна.html
