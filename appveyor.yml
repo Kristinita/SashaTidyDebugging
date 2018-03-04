@@ -4,4 +4,4 @@ install:
 
 build_script:
 
-  - tidy -mq SashaBeautiful.html
+  - tidy -mq "СашаПрекрасна.html"
