@@ -1,0 +1,7 @@
+install:
+
+  - choco install html-tidy -y -i
+
+build_script:
+
+  - tidy.bat
