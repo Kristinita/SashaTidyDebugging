@@ -1,10 +1,9 @@
 install:
 
-  - choco install html-tidy -y -i
+  - choco install html-tidy -y
 
 build_script:
 
   - chcp 65001
-  - set PYTHONIOENCODING=utf-8
   - tidy -mq SashaBeautiful.html
-  - tidy -mq -utf8 СашаПрекрасна.html
+  - tidy -mq СашаПрекрасна.html
