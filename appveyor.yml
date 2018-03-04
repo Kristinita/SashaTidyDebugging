@@ -4,7 +4,7 @@ install:
 
 before_build:
 
-  - tidy -mq SashaBeautiful.html
+  - tidy-modify.bat
 
 build_script:
 
