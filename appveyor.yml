@@ -4,5 +4,5 @@ install:
 
 build_script:
 
-  - tidy-loop.bat
+  - tidy-modify.bat
 

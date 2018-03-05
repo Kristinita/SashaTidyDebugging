@@ -1,11 +1,13 @@
 @REM @Author: Kristinita
 @REM @Date:   2018-03-04 17:48:14
 @REM @Last Modified by:   Kristinita
-@REM Modified time: 2018-03-05 08:22:34
+@REM Modified time: 2018-03-05 08:53:49
 @rem If/else exitcode:
 @REM https://stackoverflow.com/a/36897449/5951529
 @echo off
 set OK=true
+@REM Correct ERRORLEVEL in IF/ELSE
+@REM https://stackoverflow.com/a/4368104/5951529
 setlocal EnableDelayedExpansion
 FOR /R %%i IN (*.html) DO (
 	tidy -mq --wrap 0 %%i
@@ -22,8 +24,3 @@ FOR /R %%i IN (*.html) DO (
 )
 echo %OK%
 %OK%
-rem IF "!OK!"=="0" (
-rem 	echo %ERRORLEVEL% & exit /b 0
-rem 	) ELSE (
-rem 	echo %ERRORLEVEL% & exit /b 1
-rem 	)
