@@ -2,11 +2,7 @@ install:
 
   - choco install html-tidy -y -i
 
-before_build:
-
-  - tidy-modify.bat
-
 build_script:
 
-  - tidy -mq SashaBeautiful.html
+  - tidy-loop.bat
 
