@@ -4,7 +4,4 @@ install:
 
 build_script:
 
-  - cmd: |
-      chcp 65001
-      tidy -mq SashaBeautiful.html
-      tidy -mq СашаПрекрасна.html
+  - chcp 65001 && tidy -mq SashaBeautiful.html && tidy -mq СашаПрекрасна.html
