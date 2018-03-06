@@ -9,5 +9,8 @@ install:
   - cd ../../..
   - echo $PWD
 
+before_script:
+  - bash tidy-validation.sh
+
 script:
   - bash tidy-travis.sh
