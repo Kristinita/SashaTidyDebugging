@@ -4,4 +4,4 @@ install:
 
 build_script:
 
-  - chcp 65001 && tidy -mq SashaBeautiful.html && tidy -mq СашаПрекрасна.html
+  - tidydemo.bat
