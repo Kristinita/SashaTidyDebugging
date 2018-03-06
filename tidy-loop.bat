@@ -1,7 +1,7 @@
 @REM @Author: Kristinita
 @REM @Date:   2018-03-04 17:48:14
 @REM @Last Modified by:   Kristinita
-@REM Modified time: 2018-03-05 09:59:40
+@REM Modified time: 2018-03-06 07:06:21
 @rem If/else exitcode:
 @REM https://stackoverflow.com/a/36897449/5951529
 @echo off
@@ -14,7 +14,7 @@ FOR /R %%f IN (*.html) DO (
 	IF "!ERRORLEVEL!"=="0" (
 		@REM Split filename from filepath
 		@REM https://stackoverflow.com/a/9253018/5951529
-		echo %%~nxf is VALIDALL!
+		echo %%~nxf is valid!
 	) ELSE (
 	@rem Exclamation mark as literal:
 	@rem https://stackoverflow.com/a/3288632/5951529
