@@ -10,4 +10,4 @@ install:
   - echo $PWD
 
 script:
-  - tidy-travis.sh
+  - bash tidy-travis.sh
