@@ -1,7 +1,7 @@
 install:
-
   - choco install html-tidy -y -i
+  - reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_EXPAND_SZ /d "chcp 65001" /f
 
 build_script:
-
-  - tidydemo.bat
+  - tidy -mq SashaBeautiful.html
+  - tidy -mq -utf8 СашаПрекрасна.html
