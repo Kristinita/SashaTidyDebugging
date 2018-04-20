@@ -9,3 +9,6 @@ install:
   - cmake ../..
   - cmake --build . --config Release
   - sudo make install
+
+script:
+  - echo "HTML Tidy installed!"
