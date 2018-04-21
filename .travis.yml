@@ -10,6 +10,7 @@ install:
   - cmake ../.. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIB:BOOL=OF
   - make
   - sudo make install
+  - cd $TRAVIS_BUILD_DIR
 
 script:
   - tidy -q --markup no SashaTidyCompile.html
