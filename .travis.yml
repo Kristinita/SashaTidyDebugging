@@ -3,11 +3,12 @@ language: python
 python: 3.6
 
 install:
+  - sudo apt-get install xsltproc
   - git clone -b issue-721 https://github.com/htacg/tidy-html5.git
   - cd tidy-html5
   - cd build/cmake
-  - cmake ../..
-  - cmake --build . --config Release
+  - cmake ../.. -DCMAKE_BUILD_TYPE=Release
+  - make
   - sudo make install
 
 script:
