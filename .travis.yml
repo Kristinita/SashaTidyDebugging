@@ -7,9 +7,8 @@ install:
   - git clone -b issue-721 https://github.com/htacg/tidy-html5.git
   - cd tidy-html5
   - cd build/cmake
-  - cmake ../.. -DCMAKE_BUILD_TYPE=Release
+  - cmake ../.. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIB:BOOL=OF
   - make
-  - sudo make install
 
 script:
-  - echo "HTML Tidy installed!"
+  - tidy -q --markup no SashaTidyCompile.html
