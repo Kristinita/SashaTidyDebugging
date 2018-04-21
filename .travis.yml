@@ -9,6 +9,7 @@ install:
   - cd build/cmake
   - cmake ../.. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIB:BOOL=OF
   - make
+  - sudo make install
 
 script:
   - tidy -q --markup no SashaTidyCompile.html
