@@ -13,4 +13,4 @@ install:
   - cd $TRAVIS_BUILD_DIR
 
 script:
-  - tidy -q --markup no SashaTidyCompile.html
+  - tidy -config tidy.conf Sasha__Tidy--NonASCIIInConfiguration.html
