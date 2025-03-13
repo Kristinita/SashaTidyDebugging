@@ -13,11 +13,11 @@ install:
 - git clone https://github.com/nakajima/tidy-html5 --branch pre-formatting --single-branch
 - cd tidy-html5
 - cd build/cmake
-- cmake ../.. -DCMAKE_BUILD_TYPE=Release
+- cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=dist/
 - make
 - sudo make install
 - cd $TRAVIS_BUILD_DIR
-- ls /usr/local/bin/tidy
+- ls $TRAVIS_BUILD_DIR/dist/bin
 
 language: python
 
@@ -28,6 +28,5 @@ python: 3.13
 script:
 - which tidy
 - tidy --version
-- githubrelease --version
 - githubrelease --github-token $TOKEN_TRAVIS_FOR_GITHUB_RELEASES_DEPLOYMENT
-  asset Kristinita/SashaTidyDebugging upload 1.0.0 "/usr/local/bin/tidy/*"
+  asset Kristinita/SashaTidyDebugging upload 1.0.0 "dist/bin/*"
