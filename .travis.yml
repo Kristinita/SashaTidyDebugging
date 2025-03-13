@@ -1,16 +1,23 @@
-language: python
+dist: jammy
 
-python: 3.6
+git:
+  depth: 1
 
 install:
-  - sudo apt-get install xsltproc
-  - git clone https://github.com/htacg/tidy-html5.git
-  - cd tidy-html5
-  - cd build/cmake
-  - cmake ../.. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIB:BOOL=OFF
-  - make
-  - sudo make install
-  - cd $TRAVIS_BUILD_DIR
+- sudo apt-get install xsltproc
+- git clone https://github.com/nakajima/tidy-html5 --branch pre-formatting --single-branch
+- cd tidy-html5
+- cd build/cmake
+- cmake ../.. -DCMAKE_BUILD_TYPE=Release
+- make
+- sudo make install
+- cd $TRAVIS_BUILD_DIR
+
+language: python
+
+os: linux
+
+python: 3.13
 
 script:
-  - tidy -config tidy.conf Sasha__Tidy--NonASCIIInConfiguration.html
+- tidy --version
