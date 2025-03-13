@@ -1,3 +1,15 @@
+deploy:
+
+  file: /usr/local/bin/tidy/tidy
+
+  overwrite: true
+
+  provider: releases
+
+  tag_name: 5.9.20
+
+  token: aVH1RJLFDbAGCH01Hl1fTBX7wH7B969sFv/u/NyOI4QJSwremI0lxynCROpQZgZ7/LUlPGeisLGXp/YNl5CwA4qE5BsGu3iUjxutyDax1CYwpe/8dCJ0e+UUD8qefHeA2hY+T1IMbphatZOvkRBbicKhEiHmlycTOZQK4nj+hYrAYVuzfGTEwV9RlC1CZQtkIEuSahtWn6lGTU8NJVE8Nvhc4WSw7/xvbuAWEBj16eyy2eUdjyqSLHp3dlcPJ5iVbzoLI5l8htHNf2Nmpx95vBg+nZPcFMgjRd38jvHg4/nAYwhz9B58PuGRz1McGaWYG/tnOgEQC4X/HVkI8uLcvC2hVE08r2EtTJqDcNpod7guJsj/Y2Pxdt2jRbXD/2LkGmJuZ+e/hDYyvuA6MRGlOv/ZaH1q0ovEFfYAb7jS25BLrWIV5TQkxhWmzXesFW3jgGl1aX2uJjriJN/usmBDiJI7n7mHHb5PJDhEj0L1/w9ju8fW6srOL/vCcR/S09Kw6NP5boKgN1E2zKGVlHs9E2DbiyYW9YOpBzBH6xBdNNq4AadDOc1s0vIi/dbWME02B0IHek4NLlLr3ngJJ18m9JPFF5UQ+PnjMvHG8hFaYJQpy9GX5yVA0cuG5gv51bLwjSb0w2BU1bvbV6pqqcKGvfDtmTHcRByRGBWrvYDjads=
+
 dist: jammy
 
 git:
@@ -12,6 +24,7 @@ install:
 - make
 - sudo make install
 - cd $TRAVIS_BUILD_DIR
+- dir /usr/local/bin/tidy
 
 language: python
 
