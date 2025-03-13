@@ -24,7 +24,7 @@ install:
 - make
 - sudo make install
 - cd $TRAVIS_BUILD_DIR
-- dir /usr/local/bin/tidy
+- ls /usr/local/bin/tidy
 
 language: python
 
