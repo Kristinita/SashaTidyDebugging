@@ -1,26 +1,14 @@
-deploy:
-
-  edge: true
-
-  file: /usr/local/bin/tidy/tidy
-
-  on:
-    branch: main
-
-  overwrite: true
-
-  provider: releases
-
-  tag_name: 5.9.20
-
-  token: aVH1RJLFDbAGCH01Hl1fTBX7wH7B969sFv/u/NyOI4QJSwremI0lxynCROpQZgZ7/LUlPGeisLGXp/YNl5CwA4qE5BsGu3iUjxutyDax1CYwpe/8dCJ0e+UUD8qefHeA2hY+T1IMbphatZOvkRBbicKhEiHmlycTOZQK4nj+hYrAYVuzfGTEwV9RlC1CZQtkIEuSahtWn6lGTU8NJVE8Nvhc4WSw7/xvbuAWEBj16eyy2eUdjyqSLHp3dlcPJ5iVbzoLI5l8htHNf2Nmpx95vBg+nZPcFMgjRd38jvHg4/nAYwhz9B58PuGRz1McGaWYG/tnOgEQC4X/HVkI8uLcvC2hVE08r2EtTJqDcNpod7guJsj/Y2Pxdt2jRbXD/2LkGmJuZ+e/hDYyvuA6MRGlOv/ZaH1q0ovEFfYAb7jS25BLrWIV5TQkxhWmzXesFW3jgGl1aX2uJjriJN/usmBDiJI7n7mHHb5PJDhEj0L1/w9ju8fW6srOL/vCcR/S09Kw6NP5boKgN1E2zKGVlHs9E2DbiyYW9YOpBzBH6xBdNNq4AadDOc1s0vIi/dbWME02B0IHek4NLlLr3ngJJ18m9JPFF5UQ+PnjMvHG8hFaYJQpy9GX5yVA0cuG5gv51bLwjSb0w2BU1bvbV6pqqcKGvfDtmTHcRByRGBWrvYDjads=
-
 dist: jammy
+
+env:
+  global:
+  - secure: s4wScLwyN/8Yfg/hrCl359UV3fVol1DGKGf8ZJe6ZYfl0CU3QzAuRHCbCsGl/gdtgxA5I49waOyYpM7qMWcuacAqI5snLH64YPc3ZeUStd/TlCBF29DBRftU3LRAbJ75WlR6t3chl1eVZJkNdJjFHWc8jqBDUBJWWgZvXiD+8z/98L/3VJEJkk4aIaSgoxs4hdCJcfEq3bfZQLes7cvxyGUvsRg2fic8eiawSCqhYUrgOB4Pr/eqzrENmsBlQHx1qlE7X4MWbm9mgqCMsOcd4w0pJ5WCasHjpjuTgjBF7CbXi8VI7TD88VJIaAY107JTGfIvmRCRKG1tioZTMZTUy41Pv6rNrLlVsThsCY8QiILjWdhT8Bvc895W3y1uBBe1R3kGrkeIO8AoDi2QXZMDcQL3XLq4q2zVPXLMr3CZrNpjXleBflBx3UeKhUxZ6qGADUj/Wr/dRCJZwfPM1AMjt3ke9yheRmQDyscGxw/Yl5WVZzJyytjzDX9D7meW1ZDMBwEOHwwSe6UiJLmU/L4vcwVofM2N5UHYVh1o1W8Xw1yB81skArJRzP/tLhf5x8rW9A1J0+hqifmS1VXhKXxbUXoJKJ22cjUHZGdkqyZJP7VbI3ZzGwK/cSWpa+7BkyQhMgsgeXGXG/G5+diPuQD4G1s9HXXg6OKu9kraiC7u1SE=
 
 git:
   depth: 1
 
 install:
+- pip install githubrelease
 - sudo apt-get install xsltproc
 - git clone https://github.com/nakajima/tidy-html5 --branch pre-formatting --single-branch
 - cd tidy-html5
@@ -38,4 +26,8 @@ os: linux
 python: 3.13
 
 script:
+- which tidy
 - tidy --version
+- githubrelease --version
+- githubrelease --github-token $TOKEN_TRAVIS_FOR_GITHUB_RELEASES_DEPLOYMENT
+  asset Kristinita/SashaTidyDebugging upload 1.0.0 "/usr/local/bin/tidy/*"
