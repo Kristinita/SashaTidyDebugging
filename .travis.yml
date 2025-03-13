@@ -1,5 +1,7 @@
 deploy:
 
+  edge: true
+
   file: /usr/local/bin/tidy/tidy
 
   on:
