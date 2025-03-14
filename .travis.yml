@@ -2,7 +2,7 @@ dist: jammy
 
 env:
   global:
-  - secure: s4wScLwyN/8Yfg/hrCl359UV3fVol1DGKGf8ZJe6ZYfl0CU3QzAuRHCbCsGl/gdtgxA5I49waOyYpM7qMWcuacAqI5snLH64YPc3ZeUStd/TlCBF29DBRftU3LRAbJ75WlR6t3chl1eVZJkNdJjFHWc8jqBDUBJWWgZvXiD+8z/98L/3VJEJkk4aIaSgoxs4hdCJcfEq3bfZQLes7cvxyGUvsRg2fic8eiawSCqhYUrgOB4Pr/eqzrENmsBlQHx1qlE7X4MWbm9mgqCMsOcd4w0pJ5WCasHjpjuTgjBF7CbXi8VI7TD88VJIaAY107JTGfIvmRCRKG1tioZTMZTUy41Pv6rNrLlVsThsCY8QiILjWdhT8Bvc895W3y1uBBe1R3kGrkeIO8AoDi2QXZMDcQL3XLq4q2zVPXLMr3CZrNpjXleBflBx3UeKhUxZ6qGADUj/Wr/dRCJZwfPM1AMjt3ke9yheRmQDyscGxw/Yl5WVZzJyytjzDX9D7meW1ZDMBwEOHwwSe6UiJLmU/L4vcwVofM2N5UHYVh1o1W8Xw1yB81skArJRzP/tLhf5x8rW9A1J0+hqifmS1VXhKXxbUXoJKJ22cjUHZGdkqyZJP7VbI3ZzGwK/cSWpa+7BkyQhMgsgeXGXG/G5+diPuQD4G1s9HXXg6OKu9kraiC7u1SE=
+  - secure: ihRhgdvjKYynrsWHyl4HwUzkzSBNUyz9WQnUzarWnuhi6b098suHVXplDXXdsPOnPkICTZxaHg3Vrj3ufuzF4uUbXpGVjVBRG6YpDno3RWe75njfws03fsQi4HgUIo4sUfJx4Lf1l2L0rGR6RcvIITfYD1RmqIOjjy+hP8vMeaJPK9Nt0oFNc9n0euNGb95Zq+Kh2vWm0rr08FjIUmlUPdwr8A4mRNDJJOoCQUqS9piRITBwDJFWJwtPtDPZ+fU0MtD2egOzFK6HNQttHpR+2YGi17eAfxAXy2EsNZhpqhNNdTGBAgVj7TkFzKyCcpnq/8q9lKDQpWtuQuy4VvEBF4zhX4hJOrVZZlZGQlZXnNeiFQt77jJrKzw066pJLL2xeB3kZqN/mx6OsR1YN6CSD1RXlJpxxeJ5uc4OpvnHcOuugEztqVXhQNt5LH2nRP+rzJqHyHV6HLk5+VyccXGptPvwacX/dlgjoxJ0BQQqidL6Hkm6ov90u91JDIKLaTqb4P/6ln4vjCABU4CEw0fzW/YBiBO8ZkSnV5+w4CTdNgeZcBHf7i18iskbHcB169AOrkzb2BgsY+OtF51DKqsYbgzVgiE8Ryorg1quXYYH8/sHMjkhxxh4IH3T4hPMR43EUR59N0gkcsFtuHKboi8UrF7O1VDwMeo8u5JnkViIOEQ=
 
 git:
   depth: 1
@@ -16,7 +16,6 @@ install:
 - cmake ../.. -DCMAKE_BUILD_TYPE=Release
 - make
 - sudo make install
-- cd $TRAVIS_BUILD_DIR
 - ls /usr/local/bin
 
 language: python
@@ -28,5 +27,5 @@ python: 3.13
 script:
 - which tidy
 - tidy --version
-- githubrelease --github-token $TOKEN_TRAVIS_FOR_GITHUB_RELEASES_DEPLOYMENT
-  asset Kristinita/SashaTidyDebugging upload 1.0.0 /usr/local/bin/*
+- githubrelease --github-token $TOKEN_CI_FOR_GITHUB_RELEASES_DEPLOYMENT release Kristinita/SashaTidyDebugging
+  create 1.0.4 /usr/local/bin/tidy --name "Unofficial HTML Tidy 5.9.20 release" --publish

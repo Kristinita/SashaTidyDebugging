@@ -1,0 +1,24 @@
+build_script:
+- githubrelease --github-token %TOKEN_CI_FOR_GITHUB_RELEASES_DEPLOYMENT%
+  asset Kristinita/SashaTidyDebugging upload 1.0.4 "C:\Program Files (x86)\tidy\bin\tidy.exe"
+
+clone_depth: 1
+
+environment:
+
+  TOKEN_CI_FOR_GITHUB_RELEASES_DEPLOYMENT:
+    secure: 3evurgj4Op4YlN+flWPc28Z7POqMG83Zin0rLnn+Cwr7wlWHWR2TMqhBSLpMzonp
+
+image: Visual Studio 2022
+
+install:
+- pip install githubrelease
+- git clone https://github.com/nakajima/tidy-html5 --branch pre-formatting --single-branch
+- cd tidy-html5
+- cd build/cmake
+- cmake ../.. -DCMAKE_BUILD_TYPE=Release
+- cmake --build . --config Release
+- cmake --build . --config Release --target INSTALL
+- dir "C:\Program Files (x86)\tidy\bin"
+
+platform: x64
