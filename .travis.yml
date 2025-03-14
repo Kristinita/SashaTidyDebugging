@@ -1,13 +1,26 @@
+after_script:
+- ls /usr/local/bin
+- tidy --version
+
+after_success:
+
+# [INFO] I use the Python package “githubrelease” for creating and managing GitHub releases:
+# https://github.com/scikit-build/github-release
+- githubrelease --github-token $TOKEN_CI_FOR_GITHUB_RELEASES_DEPLOYMENT release Kristinita/SashaTidyDebugging
+  create 1.0.6 /usr/local/bin/tidy --name "Unofficial HTML Tidy 5.9.20 release" --publish
+
 before_script:
 - cmake --version
 - make --version
 - python --version
-- tidy --version
 
 dist: jammy
 
 env:
   global:
+
+  # [INFO] Encrypted “TOKEN_CI_FOR_GITHUB_RELEASES_DEPLOYMENT” environment variable —
+  # GitHub token with the scope “public_repo”
   - secure: ihRhgdvjKYynrsWHyl4HwUzkzSBNUyz9WQnUzarWnuhi6b098suHVXplDXXdsPOnPkICTZxaHg3Vrj3ufuzF4uUbXpGVjVBRG6YpDno3RWe75njfws03fsQi4HgUIo4sUfJx4Lf1l2L0rGR6RcvIITfYD1RmqIOjjy+hP8vMeaJPK9Nt0oFNc9n0euNGb95Zq+Kh2vWm0rr08FjIUmlUPdwr8A4mRNDJJOoCQUqS9piRITBwDJFWJwtPtDPZ+fU0MtD2egOzFK6HNQttHpR+2YGi17eAfxAXy2EsNZhpqhNNdTGBAgVj7TkFzKyCcpnq/8q9lKDQpWtuQuy4VvEBF4zhX4hJOrVZZlZGQlZXnNeiFQt77jJrKzw066pJLL2xeB3kZqN/mx6OsR1YN6CSD1RXlJpxxeJ5uc4OpvnHcOuugEztqVXhQNt5LH2nRP+rzJqHyHV6HLk5+VyccXGptPvwacX/dlgjoxJ0BQQqidL6Hkm6ov90u91JDIKLaTqb4P/6ln4vjCABU4CEw0fzW/YBiBO8ZkSnV5+w4CTdNgeZcBHf7i18iskbHcB169AOrkzb2BgsY+OtF51DKqsYbgzVgiE8Ryorg1quXYYH8/sHMjkhxxh4IH3T4hPMR43EUR59N0gkcsFtuHKboi8UrF7O1VDwMeo8u5JnkViIOEQ=
 
 git:
@@ -15,14 +28,6 @@ git:
 
 install:
 - pip install githubrelease
-- sudo apt-get install xsltproc
-- git clone https://github.com/nakajima/tidy-html5 --branch pre-formatting --single-branch
-- cd tidy-html5
-- cd build/cmake
-- cmake ../.. -DCMAKE_BUILD_TYPE=Release
-- make
-- sudo make install
-- ls /usr/local/bin
 
 language: python
 
@@ -31,7 +36,18 @@ os: linux
 python: 3.13
 
 script:
-- which tidy
-- tidy --version
-- githubrelease --github-token $TOKEN_CI_FOR_GITHUB_RELEASES_DEPLOYMENT release Kristinita/SashaTidyDebugging
-  create 1.0.5 /usr/local/bin/tidy --name "Unofficial HTML Tidy 5.9.20 release" --publish
+# [INFO] Build the Tidy library and command-line tool for macOS/Linux/UNIX:
+# https://github.com/htacg/tidy-html5/blob/next/README/BUILD.md#macoslinuxunix
+- sudo apt-get install xsltproc
+- git clone https://github.com/nakajima/tidy-html5 --branch pre-formatting --single-branch
+- cd tidy-html5
+
+# [INFO] cmake is pre-installed on the Ubuntu 22.04 (Jammy Jellyfish) Build Environment on Travis CI:
+# https://docs.travis-ci.com/user/reference/jammy/#compilers-and-build-toolchain
+- cd build/cmake
+- cmake ../.. -DCMAKE_BUILD_TYPE=Release
+
+# [INFO] “Because Make comes bundled with the Unix operating system, there is no need to install it”:
+# https://earthly.dev/blog/cmake-vs-make-diff/#installing-cmake-and-make
+- make
+- sudo make install
