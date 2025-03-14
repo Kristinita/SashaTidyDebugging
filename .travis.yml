@@ -1,3 +1,9 @@
+before_script:
+- cmake --version
+- make --version
+- python --version
+- tidy --version
+
 dist: jammy
 
 env:
@@ -28,4 +34,4 @@ script:
 - which tidy
 - tidy --version
 - githubrelease --github-token $TOKEN_CI_FOR_GITHUB_RELEASES_DEPLOYMENT release Kristinita/SashaTidyDebugging
-  create 1.0.4 /usr/local/bin/tidy --name "Unofficial HTML Tidy 5.9.20 release" --publish
+  create 1.0.5 /usr/local/bin/tidy --name "Unofficial HTML Tidy 5.9.20 release" --publish

@@ -1,6 +1,11 @@
+before_build:
+- '"C:\Program Files (x86)\tidy\bin\tidy" --version'
+- cmake --version
+- python --version
+
 build_script:
 - githubrelease --github-token %TOKEN_CI_FOR_GITHUB_RELEASES_DEPLOYMENT%
-  asset Kristinita/SashaTidyDebugging upload 1.0.4 "C:\Program Files (x86)\tidy\bin\tidy.exe"
+  asset Kristinita/SashaTidyDebugging upload 1.0.5 "C:\Program Files (x86)\tidy\bin\tidy.exe"
 
 clone_depth: 1
 
