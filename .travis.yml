@@ -1,8 +1,6 @@
-after_script:
+after_success:
 - ls /usr/local/bin
 - tidy --version
-
-after_success:
 
 # [INFO] I use the Python package “githubrelease” for creating and managing GitHub releases:
 # https://github.com/scikit-build/github-release
@@ -11,6 +9,7 @@ after_success:
 
 before_script:
 - cmake --version
+- lsb_release --all
 - make --version
 - python --version
 
@@ -36,6 +35,7 @@ os: linux
 python: 3.13
 
 script:
+
 # [INFO] Build the Tidy library and command-line tool for macOS/Linux/UNIX:
 # https://github.com/htacg/tidy-html5/blob/next/README/BUILD.md#macoslinuxunix
 - sudo apt-get install xsltproc

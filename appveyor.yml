@@ -5,6 +5,7 @@ after_build:
 before_build:
 - cmake --version
 - python --version
+- ver
 
 build_script:
 
